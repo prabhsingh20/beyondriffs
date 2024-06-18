@@ -1,10 +1,13 @@
+import HeroSection from "../features/homepage/HeroSection";
 import Navbar from "../ui/Navbar";
 
 function HomePage() {
   return (
     <>
       <Navbar />
-      <h1>HomePage</h1>
+      <main>
+        <HeroSection />
+      </main>
     </>
   );
 }
