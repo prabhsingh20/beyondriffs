@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 
-function LinkCustom({ children, className }) {
+const style =
+  " rounded-2xl border-[0.5px] border-border-1  px-8 py-[18px] font-semibold text-white outline-none";
+
+function LinkCustom({ children, className, to }) {
   return (
     <Link
-      to="/trial"
-      className={`rounded-2xl border-[0.5px] border-border-trial bg-gradient-trial px-8 py-[18px] font-semibold text-white shadow-custom outline-none ${className}`}
+      to={to}
+      className={`${to === "/trial" ? `shadow-button bg-gradient-trial ${style} ${className}` : style + className} `}
     >
       {children}
     </Link>

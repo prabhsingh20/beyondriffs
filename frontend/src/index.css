@@ -11,3 +11,49 @@
   background-clip: text;
   color: transparent;
 }
+
+/* LOGIN INPUT FIELD STYLING */
+
+.login-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a0232;
+  opacity: 40%;
+}
+
+.react-tel-input .form-control {
+  font-size: 25px;
+  width: 548px;
+  border-radius: 12px;
+  border: 1px solid #79747e;
+  padding: 26px 50px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #000;
+  outline: none;
+}
+
+.react-tel-input .form-control::placeholder {
+  letter-spacing: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #a9a9a9;
+  border-left: 1px solid #79747e;
+}
+
+.react-tel-input .country-list {
+  color: #000;
+}
+
+.react-tel-input .flag-dropdown {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: white;
+  border: 1px solid #79747e;
+}
+
+/* LOGIN INPUT FIELD STYLING */

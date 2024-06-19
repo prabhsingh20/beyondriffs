@@ -4,7 +4,7 @@ import LinkCustom from "./LinkCustom";
 function Navbar() {
   return (
     <header>
-      <nav className="bg-nav-bg px-24 py-7 font-medium tracking-wider text-nav-text">
+      <nav className="text-firstShade bg-nav-bg px-24 py-7 font-medium tracking-wider">
         <ul className="flex items-center justify-between">
           <div>
             <li>
@@ -27,12 +27,12 @@ function Navbar() {
           </div>
           <div className="flex gap-4">
             <li>
-              <Link to="/login" className="rounded-lg p-4 text-nav-login">
+              <Link to="/login" className="text-secondShade rounded-lg p-4">
                 Login
               </Link>
             </li>
             <li>
-              <LinkCustom>Book a free trial</LinkCustom>
+              <LinkCustom to="/trial">Book a free trial</LinkCustom>
             </li>
           </div>
         </ul>
