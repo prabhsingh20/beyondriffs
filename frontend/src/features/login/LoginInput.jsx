@@ -31,7 +31,7 @@ function LoginInput() {
   }
 
   return (
-    <div>
+    <>
       {!showOtpInput ? (
         <form
           onSubmit={handlePhoneSubmit}
@@ -59,15 +59,13 @@ function LoginInput() {
           </div>
         </form>
       ) : (
-        <div>
-          <OtpInput
-            length={6}
-            onOtpSubmit={onOtpSubmit}
-            phoneNumber={phoneNumber}
-          />
-        </div>
+        <OtpInput
+          length={6}
+          onOtpSubmit={onOtpSubmit}
+          phoneNumber={phoneNumber}
+        />
       )}
-    </div>
+    </>
   );
 }
 

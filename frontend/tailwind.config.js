@@ -13,6 +13,9 @@ export default {
         "nav-bg": "#070109",
         "border-1": "#BB53F6",
         "border-2": "#8510C8",
+        "border-3": "#79747e",
+        "border-4": "#B957F2",
+        placeHolder: "#A9A9A9",
       },
       fontFamily: { monts: ["Montserrat", " sans-serif"] },
       // eslint-disable-next-line no-unused-vars
@@ -24,6 +27,7 @@ export default {
         hero: "url('/homepage/bg-hero.png')",
         "login-bg": "url('/login/login-bg.jpg')",
         "otp-bg": "url('/login/otp-bg.png')",
+        "trial-bg": "url('/trial/trial-bg.png')",
       }),
       boxShadow: {
         button: "inset 3px 3px 3px 0 rgba(184, 58, 255, 0.5)",

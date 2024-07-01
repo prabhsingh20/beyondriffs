@@ -1,12 +1,7 @@
-import Navbar from "../ui/Navbar";
+import Role from "../features/trial/Role";
 
 function Trial() {
-  return (
-    <>
-      <Navbar />
-      <h1>Trial</h1>
-    </>
-  );
+  return <Role />;
 }
 
 export default Trial;
