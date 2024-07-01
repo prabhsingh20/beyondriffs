@@ -4,30 +4,38 @@ import LinkCustom from "./LinkCustom";
 function Navbar() {
   return (
     <header>
-      <nav className="text-firstShade bg-nav-bg px-24 py-7 font-medium tracking-wider">
+      <nav className="bg-nav-bg px-14 py-7 font-medium tracking-wider text-firstShade">
         <ul className="flex items-center justify-between">
           <div>
             <li>
-              <img src="/logo.png" alt="company logo" />
+              <Link to="/">
+                <img src="/logo.png" alt="company logo" />
+              </Link>
             </li>
           </div>
           <div className="flex gap-10">
             <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
               <NavLink to="/course">Course</NavLink>
             </li>
             <li>
-              <NavLink to="/blogs">Blogs</NavLink>
+              <NavLink to="/course">Certificate</NavLink>
+            </li>
+            <li>
+              <NavLink to="/course">Programs</NavLink>
+            </li>
+            <li>
+              <NavLink to="/blogs">About</NavLink>
             </li>
             <li>
               <NavLink to="/support">Support</NavLink>
             </li>
+            <li>
+              <NavLink to="/support">Hiring</NavLink>
+            </li>
           </div>
           <div className="flex gap-4">
             <li>
-              <Link to="/login" className="text-secondShade rounded-lg p-4">
+              <Link to="/login" className="rounded-lg p-4 text-secondShade">
                 Login
               </Link>
             </li>

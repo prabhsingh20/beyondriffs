@@ -27,9 +27,10 @@
 
 .react-tel-input .form-control {
   font-size: 25px;
-  width: 548px;
+  /* width: 548px; */
+  width: 625px;
   border-radius: 12px;
-  border: 1px solid #79747e;
+  /* border: 1px solid #79747e; */
   padding: 26px 50px;
   font-weight: 500;
   letter-spacing: 0.1em;
