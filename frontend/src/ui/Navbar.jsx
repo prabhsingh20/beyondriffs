@@ -1,10 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import LinkCustom from "./LinkCustom";
 
 function Navbar() {
   return (
     <header>
-      <nav className="bg-nav-bg px-14 py-7 font-medium tracking-wider text-firstShade">
+      <nav className="text-primary-50 bg-black px-14 py-7 font-semibold tracking-wider">
         <ul className="flex items-center justify-between">
           <div>
             <li>
@@ -13,9 +12,9 @@ function Navbar() {
               </Link>
             </li>
           </div>
-          <div className="flex gap-10">
+          <div className="flex gap-10 text-base">
             <li>
-              <NavLink to="/course">Course</NavLink>
+              <NavLink to="/course">Courses</NavLink>
             </li>
             <li>
               <NavLink to="/course">Certificate</NavLink>
@@ -35,12 +34,17 @@ function Navbar() {
           </div>
           <div className="flex gap-4">
             <li>
-              <Link to="/login" className="rounded-lg p-4 text-secondShade">
+              <Link to="/login" className="text-primary-100 rounded-lg p-4">
                 Login
               </Link>
             </li>
             <li>
-              <LinkCustom to="/trial">Book a free trial</LinkCustom>
+              <Link
+                to="/trial"
+                className="bg-grad-button rounded-2xl px-8 py-4 italic text-white shadow-button outline-none"
+              >
+                Book a free trial
+              </Link>
             </li>
           </div>
         </ul>

@@ -35,10 +35,10 @@ function LoginInput() {
       {!showOtpInput ? (
         <form
           onSubmit={handlePhoneSubmit}
-          className="login-form relative h-screen bg-login-bg bg-cover bg-no-repeat"
+          className="login-form relative h-screen bg-login-bg bg-cover bg-no-repeat px-48 py-20"
         >
-          <div className="relative flex h-screen items-center justify-center text-white">
-            <div className="flex flex-col gap-10 rounded-[40px] bg-gradient-login px-44 py-32 shadow-login">
+          <div className="relative text-white">
+            <div className="bg-grad-blur flex flex-col gap-10 rounded-[40px] px-44 py-32 shadow-login">
               <h1 className="text-center text-[40px] font-semibold">
                 Welcome Back
               </h1>
@@ -53,7 +53,9 @@ function LoginInput() {
                   onChange={handlePhoneNumber}
                   className="react-tel-input form-control"
                 />
-                <ButtonCustom>Send Code</ButtonCustom>
+                <ButtonCustom type="secondary" className="mt-10">
+                  Send Code
+                </ButtonCustom>
               </div>
             </div>
           </div>

@@ -7,22 +7,35 @@ export default {
         theme: "#1A0232",
         white: "#ffffff",
         black: "#000000",
-        firstShade: "#F4F4F5",
-        secondShade: "#E9E2ED",
-        thirdShade: "#C6C4C7",
-        "nav-bg": "#070109",
-        "border-1": "#BB53F6",
-        "border-2": "#8510C8",
-        "border-3": "#79747e",
-        "border-4": "#B957F2",
         placeHolder: "#A9A9A9",
+        nav: "#070109",
+
+        primary: {
+          50: "#F4F4F5",
+          100: "#E9E2ED",
+        },
+        secondary: {
+          200: "#D9CCE0",
+          300: "#C6C4C7",
+          350: "#CDC7CD",
+          400: "#CDC1D2",
+          500: "#A9A6A9",
+        },
+        border: {
+          1: "#79747e",
+          2: "#8027B3",
+          3: "#8510C8",
+          4: "#BB53F6",
+          5: "#B957F2",
+        },
       },
       fontFamily: { monts: ["Montserrat", " sans-serif"] },
       // eslint-disable-next-line no-unused-vars
       backgroundImage: (theme) => ({
         // GRADIENT COLOR
-        "gradient-trial": "linear-gradient(to right,#3E075D,#8110C3)",
-        "gradient-login": "linear-gradient(#191A1F99,#21222A33)",
+        "grad-button": "linear-gradient(to right,#420565,#6A0B90,#811CBB)",
+        "grad-blur": "linear-gradient(#3C363F99,#534D5633)",
+
         // BACKGROUND IMAGES
         hero: "url('/homepage/bg-hero.png')",
         "login-bg": "url('/login/login-bg.jpg')",
@@ -30,7 +43,7 @@ export default {
         "trial-bg": "url('/trial/trial-bg.png')",
       }),
       boxShadow: {
-        button: "inset 3px 3px 3px 0 rgba(184, 58, 255, 0.5)",
+        button: "inset 3px 3px 3px 0 rgba(0, 0, 0, 0.25)",
         login: "0 4px 24px -1px rgba(0, 0, 0, 0.25)",
       },
     },

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ButtonCustom from "../../ui/ButtonCustom";
 
 function OtpInput({ length = 6, onOtpSubmit = () => {}, phoneNumber }) {
   const [otp, setOtp] = useState(new Array(length).fill(""));
@@ -56,21 +57,17 @@ function OtpInput({ length = 6, onOtpSubmit = () => {}, phoneNumber }) {
   const hiddenNumber = maskedPart + lastThreeDigits;
 
   return (
-    <div className="login-form relative h-screen bg-otp-bg bg-cover bg-no-repeat">
-      <div className="relative flex h-screen items-center justify-center text-thirdShade">
-        <div className="flex flex-col rounded-[40px] bg-gradient-login p-24 shadow-login">
-          <h1 className="text-center text-[40px] font-semibold text-firstShade">
+    <div className="login-form relative bg-otp-bg bg-cover bg-no-repeat">
+      <div className="text-secondary-300 relative flex h-screen items-center justify-center">
+        <div className="bg-grad-blur flex flex-col rounded-[40px] px-24 py-14 shadow-login">
+          <h1 className="text-primary-50 text-center text-[40px] font-semibold">
             Enter OTP
           </h1>
-          <p className="mt-6 w-[600px] text-xl">
+          <p className="mt-6 w-[550px]">
             We sent a verification code to your registered Mobile number
           </p>
-          <span className="mt-5 font-semibold tracking-widest">
-            {hiddenNumber}
-          </span>
-          <p className="mt-5 text-xl font-medium">
-            Type your 6 digit security code
-          </p>
+          <span className="mt-5 tracking-widest">{hiddenNumber}</span>
+          <p className="mt-5">Type your 6 digit security code</p>
           <div className="flex justify-center">
             {otp.map((value, index) => {
               return (
@@ -87,6 +84,9 @@ function OtpInput({ length = 6, onOtpSubmit = () => {}, phoneNumber }) {
               );
             })}
           </div>
+          <ButtonCustom type="secondary" className="mt-10">
+            Login
+          </ButtonCustom>
         </div>
       </div>
     </div>

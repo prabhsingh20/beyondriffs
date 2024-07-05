@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
-const style =
-  " rounded-2xl border-[0.5px] border-border-1  px-8 py-[18px] font-semibold text-white outline-none";
+function LinkCustom({ children, to, type }) {
+  const base =
+    "rounded-2xl px-8 py-5 text-xl font-semibold text-white outline-none";
 
-function LinkCustom({ children, className, to }) {
+  const styles = {
+    primary: base + "  border-[1px] border-border-5",
+    secondary: base + "  bg-grad-button shadow-button",
+  };
+
   return (
-    <Link
-      to={to}
-      className={`${to === "/trial" ? `shadow-button bg-gradient-trial ${style} ${className}` : style + className} `}
-    >
+    <Link to={to} className={styles[type]}>
       {children}
     </Link>
   );
