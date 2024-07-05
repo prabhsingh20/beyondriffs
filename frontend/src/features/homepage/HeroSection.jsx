@@ -14,10 +14,10 @@ function HeroSection() {
             the magic of music.
           </p>
           <div className="mt-6 flex gap-8">
-            <LinkCustom to="/trial" className="text-xl">
+            <LinkCustom to="/trial" type="secondary">
               Book free trial
             </LinkCustom>
-            <LinkCustom to="/" className="border-[1px] border-border-2">
+            <LinkCustom to="/" type="primary">
               Teach with us
             </LinkCustom>
           </div>

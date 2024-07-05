@@ -9,3 +9,4 @@ Clone the repo "https://github.com/prabhsingh20/beyondriffs.git"
    npm install react-phone-input-2 --save,
    npm i @tanstack/react-query,
    npm i @tanstack/react-query-devtools,
+   npm install @heroicons/react
