@@ -13,6 +13,8 @@ export default {
         primary: {
           50: "#F4F4F5",
           100: "#E9E2ED",
+          200: "#EAE6EC",
+          300: "#3E075D",
         },
         secondary: {
           200: "#D9CCE0",
@@ -20,6 +22,7 @@ export default {
           350: "#CDC7CD",
           400: "#CDC1D2",
           500: "#A9A6A9",
+          600: "#BEB9C1",
         },
         border: {
           1: "#79747e",
@@ -45,6 +48,7 @@ export default {
       boxShadow: {
         button: "inset 3px 3px 3px 0 rgba(0, 0, 0, 0.25)",
         login: "0 4px 24px -1px rgba(0, 0, 0, 0.25)",
+        steps: "inset 4.31px 4.31px 4.31px 0 rgba(184, 58, 255, 0.5)",
       },
     },
   },

@@ -34,3 +34,9 @@ export const evening = [
   { id: 15, time: "09:00 PM" },
   { id: 16, time: "09:30 PM" },
 ];
+
+export const step = [
+  { index: "01", component: "Role" },
+  { index: "02", component: "Time" },
+  { index: "03", component: "Contact" },
+];
