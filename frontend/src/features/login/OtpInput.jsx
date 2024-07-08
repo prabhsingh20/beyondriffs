@@ -58,9 +58,9 @@ function OtpInput({ length = 6, onOtpSubmit = () => {}, phoneNumber }) {
 
   return (
     <div className="login-form relative bg-otp-bg bg-cover bg-no-repeat">
-      <div className="text-secondary-300 relative flex h-screen items-center justify-center">
-        <div className="bg-grad-blur flex flex-col rounded-[40px] px-24 py-14 shadow-login">
-          <h1 className="text-primary-50 text-center text-[40px] font-semibold">
+      <div className="relative flex h-screen items-center justify-center text-secondary-300">
+        <div className="flex flex-col rounded-[40px] bg-grad-blur px-24 py-14 shadow-login">
+          <h1 className="text-center text-[40px] font-semibold text-primary-50">
             Enter OTP
           </h1>
           <p className="mt-6 w-[550px]">

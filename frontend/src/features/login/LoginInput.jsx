@@ -1,5 +1,4 @@
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import OtpInput from "./OtpInput";
 import ButtonCustom from "../../ui/ButtonCustom";
@@ -38,7 +37,7 @@ function LoginInput() {
           className="login-form relative h-screen bg-login-bg bg-cover bg-no-repeat px-48 py-20"
         >
           <div className="relative text-white">
-            <div className="bg-grad-blur flex flex-col gap-10 rounded-[40px] px-44 py-32 shadow-login">
+            <div className="flex flex-col gap-10 rounded-[40px] bg-grad-blur px-44 py-32 shadow-login">
               <h1 className="text-center text-[40px] font-semibold">
                 Welcome Back
               </h1>
@@ -51,7 +50,6 @@ function LoginInput() {
                   country={"in"}
                   value={phoneNumber}
                   onChange={handlePhoneNumber}
-                  className="react-tel-input form-control"
                 />
                 <ButtonCustom type="secondary" className="mt-10">
                   Send Code
