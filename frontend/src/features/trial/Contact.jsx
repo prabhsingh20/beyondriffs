@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ButtonCustom from "../../ui/ButtonCustom";
 import Input from "../../ui/Input";
 
-function Contact({ handleComponentClick }) {
+function Contact({ handleComponentClick, onHandleData }) {
   const [ageGroup, setAgeGroup] = useState("18");
   const [gmail, setGmail] = useState("");
+  const [userAgree, setUserAgree] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    validateForm();
+  }, [ageGroup, gmail, userAgree]);
+
+  function validateForm() {
+    if (ageGroup && gmail && userAgree) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }
+
+  const handleSubmit = useCallback(() => {
+    const contactData = { ageGroup, gmail, userAgree };
+    onHandleData(contactData);
+  }, [ageGroup, gmail, userAgree , onHandleData]);
 
   return (
     <section className="flex flex-col gap-8 px-44 py-16">
@@ -45,7 +64,11 @@ function Contact({ handleComponentClick }) {
         />
       </div>
 
-      <div className="flex items-center gap-4">
+      <div
+        className="flex items-center gap-4"
+        value={userAgree}
+        onChange={(e) => setUserAgree(e.target.value)}
+      >
         <input
           type="checkbox"
           className="h-5 w-5 border-[1px] border-border-5"
@@ -57,10 +80,22 @@ function Contact({ handleComponentClick }) {
       </div>
 
       <div className="mt-4 flex justify-between">
-        <ButtonCustom type="primary" onClick={() => handleComponentClick(2)}>
+        <ButtonCustom
+          type="button"
+          variant="primary"
+          onClick={() => handleComponentClick(2)}
+        >
           Previous
         </ButtonCustom>
-        <ButtonCustom type="secondary">Submit</ButtonCustom>
+        <ButtonCustom
+          variant="secondary"
+          type="submit"
+          onClick={handleSubmit}
+          disabled={!isFormValid}
+          className={`${!isFormValid ? "cursor-not-allowed" : ""}`}
+        >
+          Submit
+        </ButtonCustom>
       </div>
     </section>
   );

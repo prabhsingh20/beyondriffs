@@ -6,7 +6,7 @@ function Input({ placeholder, children, value, onChange }) {
       autoComplete="true"
       value={value}
       onChange={onChange}
-      className="rounded-xl px-6 py-4 text-xl font-medium text-black outline-none placeholder:tracking-widest placeholder:text-secondary-500"
+      className="rounded-xl px-6 py-4 text-xl font-medium tracking-wide text-black outline-none placeholder:tracking-widest placeholder:text-secondary-500"
     >
       {children}
     </input>

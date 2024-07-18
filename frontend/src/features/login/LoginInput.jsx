@@ -51,7 +51,7 @@ function LoginInput() {
                   value={phoneNumber}
                   onChange={handlePhoneNumber}
                 />
-                <ButtonCustom type="secondary" className="mt-10">
+                <ButtonCustom variant="secondary" className="mt-10">
                   Send Code
                 </ButtonCustom>
               </div>
