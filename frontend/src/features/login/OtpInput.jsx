@@ -84,7 +84,7 @@ function OtpInput({ length = 6, onOtpSubmit = () => {}, phoneNumber }) {
               );
             })}
           </div>
-          <ButtonCustom type="secondary" className="mt-10">
+          <ButtonCustom variant="secondary" className="mt-10">
             Login
           </ButtonCustom>
         </div>

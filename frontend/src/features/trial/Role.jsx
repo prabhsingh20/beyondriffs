@@ -1,37 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import ButtonCustom from "../../ui/ButtonCustom";
 import Input from "../../ui/Input";
 
-function LoginInput({ handleComponentClick }) {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [isActive, setIsActive] = useState("male");
-  const [category, setCategory] = useState("");
+function LoginInput({ handleComponentClick, onHandleData }) {
+  const [role, setRole] = useState("student");
+  const [phoneNumber, setPhoneNumber] = useState("911234567891");
+  const [userName, setUserName] = useState("Unknown");
+  const [userGender, setUserGender] = useState("male");
+  const [category, setCategory] = useState(1);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    validateForm();
+  }, [role, phoneNumber, userName, userGender, category]);
 
   function handlePhoneNumber(value) {
     setPhoneNumber(value);
   }
 
-  function handlePhoneSubmit(event) {
-    event.preventDefault();
+  function handleActive(gender) {
+    setUserGender(gender);
+  }
 
-    // Phone validation
-    if (phoneNumber.length < 10) {
-      alert("Invalid Phone Number");
-      return;
+  function handleActiveRole(role) {
+    setRole(role);
+  }
+
+  function validateForm() {
+    if (
+      role &&
+      phoneNumber.length >= 10 &&
+      userName &&
+      userGender &&
+      category
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
     }
   }
 
-  function handleActive(gender) {
-    setIsActive(gender);
+  function handleSubmit() {
+    const roleData = {
+      role,
+      phoneNumber,
+      userName,
+      userGender,
+      category,
+    };
+
+    onHandleData(roleData);
+    handleComponentClick(2);
   }
 
   return (
-    <section
-      onSubmit={handlePhoneSubmit}
-      className="flex flex-col gap-10 px-44 py-12"
-    >
+    <section className="flex flex-col gap-10 px-40 py-12">
       <div className="space-y-5 text-center">
         <h1 className="text-center text-5xl font-semibold">Choose the Role</h1>
         <p className="tracking-widest">
@@ -42,17 +67,19 @@ function LoginInput({ handleComponentClick }) {
       <ul className="flex justify-center gap-20 text-center">
         <li className="space-y-2">
           <img
-            className="rounded-full bg-black p-1 pt-2"
+            className={`${role === "student" ? "shadow-steps" : ""} cursor-pointer rounded-full bg-black p-1 pt-2`}
             src="/trial/studentImg.png"
             alt="student image"
+            onClick={() => handleActiveRole("student")}
           />
           <p className="text-2xl">Student</p>
         </li>
         <li className="space-y-2">
           <img
-            className="rounded-full bg-black p-1 pt-2"
+            className={`${role === "tutor" ? "shadow-steps" : ""} cursor-pointer rounded-full bg-black p-1 pt-2`}
             src="/trial/tutorImg.png"
             alt="tutor image"
+            onClick={() => handleActiveRole("tutor")}
           />
           <p className="text-2xl">Tutor</p>
         </li>
@@ -74,38 +101,42 @@ function LoginInput({ handleComponentClick }) {
         <label htmlFor="" className="font-semibold">
           Student Name
         </label>
-        <Input placeholder="Enter your name" />
+        <Input
+          placeholder="Enter your name"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
 
       <div className="space-y-2">
         <h6 className="font-semibold">Select gender</h6>
-        <ul className="flex gap-4">
+        <ul className="flex flex-wrap gap-6">
           <li>
-            <button
+            <ButtonCustom
               type="button"
+              variant={`${userGender === "male" ? "genderActive" : "gender"}`}
               onClick={() => handleActive("male")}
-              className={`${isActive === "male" ? "rounded-2xl border-none bg-grad-button px-16 py-[18px] text-base font-semibold text-white shadow-button outline-none" : "rounded-2xl border-[1px] border-border-5 px-16 py-[18px] text-base font-semibold text-white outline-none"}`}
             >
               Male
-            </button>
+            </ButtonCustom>
           </li>
           <li>
-            <button
+            <ButtonCustom
               type="button"
+              variant={`${userGender === "female" ? "genderActive" : "gender"}`}
               onClick={() => handleActive("female")}
-              className={`${isActive === "female" ? "rounded-2xl border-none bg-grad-button px-16 py-[18px] text-base font-semibold text-white shadow-button outline-none" : "rounded-2xl border-[1px] border-border-5 px-16 py-[18px] text-base font-semibold text-white outline-none"}`}
             >
               Female
-            </button>
+            </ButtonCustom>
           </li>
           <li>
-            <button
+            <ButtonCustom
               type="button"
+              variant={`${userGender === "other" ? "genderActive" : "gender"}`}
               onClick={() => handleActive("other")}
-              className={`${isActive === "other" ? "rounded-2xl border-none bg-grad-button px-16 py-[18px] text-base font-semibold text-white shadow-button outline-none" : "rounded-2xl border-[1px] border-border-5 px-16 py-[18px] text-base font-semibold text-white outline-none"}`}
             >
               I don’t to tell
-            </button>
+            </ButtonCustom>
           </li>
         </ul>
       </div>
@@ -133,7 +164,12 @@ function LoginInput({ handleComponentClick }) {
         </span>
       </div>
 
-      <ButtonCustom type="secondary" onClick={() => handleComponentClick(2)}>
+      <ButtonCustom
+        variant="secondary"
+        onClick={handleSubmit}
+        disabled={!isFormValid}
+        className={`${!isFormValid ? "cursor-not-allowed" : ""}`}
+      >
         Select Date and Time
       </ButtonCustom>
     </section>

@@ -2,13 +2,18 @@ import { useState, useEffect } from "react";
 import ButtonCustom from "../../ui/ButtonCustom";
 import { evening, morning } from "../../data/trail";
 
-function Time({ handleComponentClick }) {
+function Time({ handleComponentClick, onHandleData }) {
   const [dates, setDates] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
   const [session, setSession] = useState(morning);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [currentTime, setCurrentTime] = useState(morning[0]);
   const [activeSession, setActiveSession] = useState("morning");
   const [activeTime, setActiveTime] = useState(morning[0].id);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    validateForm();
+  }, [activeSession, activeTime, currentTime]);
 
   useEffect(() => {
     updateDates();
@@ -55,6 +60,20 @@ function Time({ handleComponentClick }) {
     setActiveTime(time.id);
   }
 
+  function validateForm() {
+    if (selectedDate && currentTime && activeSession) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }
+
+  function handleSubmit() {
+    const timingData = { selectedDate, currentTime, activeSession };
+    onHandleData(timingData);
+    handleComponentClick(3);
+  }
+
   return (
     <section className="flex flex-col gap-10 px-28 py-12">
       <div className="space-y-5 text-center">
@@ -94,13 +113,15 @@ function Time({ handleComponentClick }) {
         )}
         <div className="space-x-5">
           <ButtonCustom
-            type={activeSession === "morning" ? "secondary" : "primary"}
+            type="button"
+            variant={activeSession === "morning" ? "secondary" : "primary"}
             onClick={() => handleSession("morning")}
           >
             Morning
           </ButtonCustom>
           <ButtonCustom
-            type={activeSession === "evening" ? "secondary" : "primary"}
+            type="button"
+            variant={activeSession === "evening" ? "secondary" : "primary"}
             onClick={() => handleSession("evening")}
           >
             Evening
@@ -112,7 +133,8 @@ function Time({ handleComponentClick }) {
         {session.map((time) => (
           <li key={time.id} className="flex justify-center">
             <ButtonCustom
-              type={activeTime === time.id ? "timeActive" : "time"}
+              type="button"
+              variant={activeTime === time.id ? "timeActive" : "time"}
               onClick={() => handleTimeClick(time)}
             >
               {time.time}
@@ -122,10 +144,15 @@ function Time({ handleComponentClick }) {
       </ul>
 
       <div className="flex justify-between">
-        <ButtonCustom type="primary" onClick={() => handleComponentClick(1)}>
+        <ButtonCustom variant="primary" onClick={() => handleComponentClick(1)}>
           Previous
         </ButtonCustom>
-        <ButtonCustom type="secondary" onClick={() => handleComponentClick(3)}>
+        <ButtonCustom
+          variant="secondary"
+          onClick={handleSubmit}
+          disabled={!isFormValid}
+          className={`${!isFormValid ? "cursor-not-allowed" : ""}`}
+        >
           Enter contact details
         </ButtonCustom>
       </div>
