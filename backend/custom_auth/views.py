@@ -6,7 +6,7 @@ from .serializers import UserSerializers , UserSerializerWithToken
 from django.http.response import JsonResponse
 
 from django.contrib.auth.hashers import make_password
-from rest_framework import status
+from rest_framework import status   
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import AccessToken
 
@@ -41,7 +41,9 @@ class LoginAPIView(APIView):
                     return Response({
                         'status': True,
                         'refresh': str(refresh),
-                        "access": str(refresh.access_token)
+                        "access": str(refresh.access_token),
+                        'first_name':user.first_name,
+                        'phone_number':user.phone_number,
                 })
             
             
