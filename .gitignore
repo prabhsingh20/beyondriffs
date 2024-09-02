@@ -13,3 +13,8 @@ backend/custom_auth/migrations/__pycache__/0002_customuser_is_staff_customuser_p
 backend/custom_auth/migrations/__pycache__/0003_alter_customuser_is_staff.cpython-311.pyc
 backend/custom_auth/__pycache__/serializers.cpython-311.pyc
 backend/custom_auth/__pycache__/views.cpython-311.pyc
+backend/backend/__pycache__
+backend/custom_auth/migrations/__pycache__
+backend/backend/__pycache__/
+backend/custom_auth/migrations/__pycache__/
+
