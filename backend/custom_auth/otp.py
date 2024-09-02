@@ -24,7 +24,7 @@ def send_otp_via_sms(phone_number, otp):
     return message.sid
 
 @api_view(['POST'])
-def send_otp_request(request,phone_number):
+def send_otp_request(request):
 
     phone_number = request.data.get('phone_number')
     
