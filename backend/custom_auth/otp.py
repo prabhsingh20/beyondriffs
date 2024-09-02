@@ -24,13 +24,17 @@ def send_otp_via_sms(phone_number, otp):
     return message.sid
 
 @api_view(['POST'])
-def send_otp_request(request):
-    phone_number = request.data.get('phone_number')
+def send_otp_request(request,phone_number):
 
+    phone_number = request.data.get('phone_number')
+    
     try:
         user = CustomUser.objects.get(phone_number=phone_number)
+    
+    
     except CustomUser.DoesNotExist:
         return Response({'error': 'User with this phone number does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
 
     # Generate a random OTP
     otp = generate_random_otp()

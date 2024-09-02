@@ -29,6 +29,8 @@ export const sendOtp = (phone_number) => async (dispatch) => {
             payload: otpData
         });
 
+        return {success :true ,data :otpData}
+
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
@@ -36,6 +38,7 @@ export const sendOtp = (phone_number) => async (dispatch) => {
                 ? error.response.data.message
                 : error.message
         });
+        return { error: true, message: error.Message };
     }
 };
 
@@ -63,6 +66,8 @@ export const login = (phone_number, otp) => async (dispatch) => {
 
         // Store user info in localStorage
         localStorage.setItem('userInfo', JSON.stringify(loginData));
+        return {success :true ,data :loginData}
+
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
@@ -70,7 +75,9 @@ export const login = (phone_number, otp) => async (dispatch) => {
                 ? error.response.data.message
                 : error.message
         });
+        return { error: true, message: error.Message };
     }
+   
 };
 
 export const logout = () =>(dispatch)=> {

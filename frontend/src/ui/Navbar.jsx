@@ -47,7 +47,7 @@ function Navbar() {
           </div>
           <div className="flex gap-4">
             {userInfo ? (
-              <NavDropdown title={userInfo.first_name} id="phone_number">
+              <NavDropdown title={userInfo.first_name ? userInfo.first_name :userInfo.phone_number} id="id">
                 <LinkContainer to="/profile">
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>

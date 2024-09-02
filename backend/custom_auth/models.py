@@ -10,6 +10,10 @@ class CustomUserManager(BaseUserManager):
     def create_user(self,phone_number,password=None,**extra_fields):
         if not phone_number:
             raise ValueError('the phone number must be set')
+        extra_fields.setdefault('is_active', True)
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_tutor', False)
+        extra_fields.setdefault('is_student', False)
         #if not phone_number:
          #   raise ValueError('the phone number must be set')      
         user = self.model(phone_number=phone_number,**extra_fields)
@@ -30,10 +34,20 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(phone_number=phone_number, password=password, **extra_fields)
     
+class GenderChoices(models.TextChoices):
+    MALE = 'MALE', 'Male'
+    FEMALE = 'FEMALE', 'Female'
+    I_DONT_TELL = 'I DONT TELL', 'I don\'t tell'
+    
 class CustomUser(AbstractBaseUser,PermissionsMixin):
     first_name = models.CharField(max_length=50,null=True,blank=True)
     email= models.EmailField(unique=True,null=True,blank=True)
     phone_number = models.IntegerField(unique=True,null=True,blank=True)
+    gender = models.CharField(
+        max_length=20,
+        choices=GenderChoices.choices,
+        default=GenderChoices.I_DONT_TELL,
+    )
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_tutor = models.BooleanField(default=False)
@@ -41,8 +55,10 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     otp = models.CharField(max_length=6,null=True,blank=True)
     otp_created_at = models.DateTimeField(null=True, blank=True)  # Track when the OTP was created
     
+    
     objects = CustomUserManager()
     USERNAME_FIELD = 'phone_number'
+
     
     def validate_otp(self, otp):
         """Validates the OTP and checks if it is still valid."""

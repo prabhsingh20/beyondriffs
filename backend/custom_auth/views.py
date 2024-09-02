@@ -32,7 +32,7 @@ class LoginAPIView(APIView):
             try:
                 user = CustomUser.objects.get(phone_number=phone_number)
             except ObjectDoesNotExist:
-                return Response({'status': False, 'message': 'User not found'}, status=404)
+                return Response({'status': False, 'message': 'User not found'}, status=404) 
 
             # Assuming you have a method to validate the OTP
             if user and user.validate_otp(otp):
